@@ -1,0 +1,26 @@
+{
+  "name": "prompt-console",
+  "version": "1.0.0",
+  "description": "Take input from command prompt in nodeJS applications.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naveen13/prompt-console.git"
+  },
+  "keywords": [
+    "prompt",
+    "console",
+    "input",
+    "nodejs",
+    "terminal"
+  ],
+  "author": "Naveen Kumar <textnav+dev@gmail.com> (http://naverse.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/naveen13/prompt-console/issues"
+  },
+  "homepage": "https://github.com/naveen13/prompt-console#readme"
+}
