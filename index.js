@@ -33,10 +33,10 @@ var ask = function(questions, scb){
 
         rl.question(ques + "\n", function(answer) {
             var test = false;
-            answer = answer.trim();
+            answer = answer.trim() || current.default;
 
             if(typeof(current.validator) == 'function'){
-                test = current.validator(answer);
+                test = current.validator(answer, answers);
             }
             else if(typeof(current.validator) == 'object'){
                 var regex = new RegExp(current.validator);

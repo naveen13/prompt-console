@@ -15,17 +15,31 @@ prompt.ask(
         color: 'green',
         name: 'name'
     },{   
-        question: 'Is it your real name? ',
-        validator: function(k){ return k == 'yes'; },
+        question: 'What is your age? ',
+        validator: /\d/,
         color: 'yellow',
         name: 'age'
     },{   
-        question: 'Please enter your home city: ',
-        validator: /\w/,
-        color: 'blue',
+        question: 'Please year were you born in: ',
+        validator: function(year, answers){ 
+			try{
+				var date1 = new Date();
+				date1.setYear(year);
+				var date2 = new Date();
+				var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+				var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+				var ret = Math.floor(diffDays / 365) == answers.age;
+				if(!ret) console.log("Wrong birth year, you would be of " + Math.floor(diffDays / 365) + " years if born in " + year);
+				return ret;
+			}catch(e){
+				return false;
+			}
+		
+		},
+        color: 'cyan',
         name: 'city'
     }], function(response){
-        console.log('Hello ' + response.name + ', ' + response.city + ' is a great city. :)');
+        console.log('That is the right year of birth ' + response.name + ', have a good day!');
     }
 );
 
