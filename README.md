@@ -10,22 +10,22 @@ var prompt = require('prompt-console');
 
 prompt.ask(
     [{   
-    question: 'Please enter server url: ',
+    question: 'What is your name: ',
         validator: 'notNULL',
         color: 'green',
-        name: 'url'
+        name: 'name'
     },{   
-        question: 'Please enter secret number: ',
-        validator: function(k){ return k < 50; },
+        question: 'Is it your real name? ',
+        validator: function(k){ return k == 'yes'; },
         color: 'yellow',
-        name: 'secret'
+        name: 'age'
     },{   
-        question: 'Please enter secret location: ',
-        validator: /\d/,
+        question: 'Please enter your home city: ',
+        validator: /\w/,
         color: 'blue',
-        name: 'secret'
-    }], function(input){
-        console.log(input);
+        name: 'city'
+    }], function(response){
+        console.log('Hello ' + response.name + ', ' + response.city + ' is a great city. :)');
     }
 );
 

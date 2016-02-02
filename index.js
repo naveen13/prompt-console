@@ -1,13 +1,18 @@
 var readline, rl, i, answers, patterns;
 
+var initReadline = function(){
+    if(!readline){
+        readline = require('readline');
+        rl = readline.createInterface({
+            input: process.stdin,
+            output: process.stdout
+        });
+    }
+}
 var init = function(){
-    readline = require('readline');
     i = 0;
     answers = {};
-    rl = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout
-    });
+
     patterns = {
         'notNULL': /^(?!\s*$)/,
         'isRequired': /^(?!\s*$)/,
@@ -20,6 +25,8 @@ var init = function(){
 init();
 
 var ask = function(questions, scb){
+    initReadline();
+
     var current = questions[i];
     if(current){
         var ques = current.color && current.question[current.color] ? current.question[current.color] : current.question;
