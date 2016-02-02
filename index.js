@@ -30,7 +30,7 @@ var ask = function(questions, scb){
     var current = questions[i];
     if(current){
         var ques = current.color && current.question[current.color] ? current.question[current.color] : current.question;
-
+		if(current.default) ques += '( ' + current.default + ' ): ';
         rl.question(ques + "\n", function(answer) {
             var test = false;
             answer = answer.trim() || current.default;

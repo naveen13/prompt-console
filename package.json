@@ -1,6 +1,6 @@
 {
   "name": "prompt-console",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Take input from command prompt in nodeJS applications.",
   "main": "index.js",
   "scripts": {
