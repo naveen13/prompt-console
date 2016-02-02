@@ -42,11 +42,13 @@ var ask = function(questions, scb){
                 var regex = new RegExp(current.validator);
                 test = regex.test(answer);
             }
-            else{
+            else if(current.validator){
                 var regex = patterns[current.validator];
                 if(regex) test = regex.test(answer);
 
-            }
+            }else{
+				test = true;
+			}
 
             if(!test){
                 ask(questions, scb);
