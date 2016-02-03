@@ -1,8 +1,9 @@
-var readline, rl, i, answers, patterns;
+var readline, rl, i, answers, patterns, isOpen;
 
 var initReadline = function(){
-    if(!readline){
-        readline = require('readline');
+    if(!isOpen){
+		isOpen = true;
+		i = 0;
         rl = readline.createInterface({
             input: process.stdin,
             output: process.stdout
@@ -12,7 +13,7 @@ var initReadline = function(){
 var init = function(){
     i = 0;
     answers = {};
-
+	isOpen = false;
     patterns = {
         'notNULL': /^(?!\s*$)/,
         'isRequired': /^(?!\s*$)/,
@@ -20,13 +21,13 @@ var init = function(){
         'string': /\w/,
         'number': /\d/,
     };
+	readline = require('readline');
 };
 
 init();
 
 var ask = function(questions, scb){
     initReadline();
-
     var current = questions[i];
     if(current){
         var ques = current.color && current.question[current.color] ? current.question[current.color] : current.question;
@@ -57,10 +58,11 @@ var ask = function(questions, scb){
                 answers[current.name || i] = answer;
                 ask(questions, scb);
             }
-        });        
+        });
     }else{
-        if(typeof(scb) != 'undefined') scb(answers);
         rl.close();
+		isOpen = false;
+		if(typeof(scb) != 'undefined') scb(answers);
     }
 }
 
