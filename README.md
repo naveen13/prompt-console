@@ -21,7 +21,8 @@ prompt.ask(
         name: 'age'
     },{   
         question: 'Please year were you born in: ',
-        validator: function(year, answers){ 
+        type: 'password',
+        validator: function(year, answers){
 			try{
 				var date1 = new Date();
 				date1.setYear(year);
@@ -34,7 +35,7 @@ prompt.ask(
 			}catch(e){
 				return false;
 			}
-		
+
 		},
         color: 'cyan',
         name: 'city'
