@@ -1,6 +1,6 @@
 {
   "name": "prompt-console",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Take input from command prompt in nodeJS applications.",
   "main": "index.js",
   "scripts": {
@@ -22,5 +22,6 @@
   "bugs": {
     "url": "https://github.com/naveen13/prompt-console/issues"
   },
-  "homepage": "https://github.com/naveen13/prompt-console#readme"
+  "homepage": "https://github.com/naveen13/prompt-console#readme",
+  "dependencies": {}
 }

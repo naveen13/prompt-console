@@ -10,10 +10,6 @@ var initReadline = function(){
         });
     }
 }
-var onDataHandler = function(char) {
-    char = char + "";
-    process.stdout.write("\033[2K\033[200D" + Array(rl.line.length+1).join("*"));
-}
 var init = function(){
     i = 0;
     answers = {};
@@ -34,12 +30,6 @@ var ask = function(questions, scb){
     initReadline();
     var current = questions[i];
     if(current){
-        if(current.type == 'password' || current.type == 'hidden'){
-            process.stdin.on("data", onDataHandler);
-        }else{
-            process.stdin.removeListener("data",onDataHandler);
-        }
-
         var ques = current.color && current.question[current.color] ? current.question[current.color] : current.question;
 		if(current.default) ques += '( ' + current.default + ' ): ';
         rl.question(ques + "\n", function(answer) {
